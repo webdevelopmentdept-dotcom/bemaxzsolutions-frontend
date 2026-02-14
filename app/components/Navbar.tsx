@@ -1,116 +1,125 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { audiowide } from "../fonts";
+
+const menuItems = ["Products", "Features", "Pricing", "Support"];
+
+const mobileMenuVariants = {
+  hidden: { opacity: 0, y: -20 },
+  visible: { opacity: 1, y: 0 },
+  exit: { opacity: 0, y: -20 },
+};
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
+  // ✅ Scroll Lock with cleanup
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    }
+
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [isOpen]);
+
   return (
-    <header className="w-full bg-[#191818] relative">
+    <header className="fixed top-0 left-0 w-full z-50 backdrop-blur-md bg-[#191818]/80  ">
 
-      {/* Main Container */}
-      <div className="max-w-[1173px] mx-auto h-[80px] flex items-center justify-between px-4 ">
+      <div className="max-w-[1200px] mx-auto h-[80px] flex items-center justify-between px-6">
 
-        {/* LEFT - Logo */}
-     
-        <div className="flex items-center md:ml-6">
-  <Image
-    src="/logo.png"
-    alt="Bemaxz Icon"
-    width={42}
-    height={40}
-    priority
-    className="block"
-  />
+        {/* Logo */}
+        <div className="flex items-center ">
+          <Image
+            src="/logo.png"
+            alt="Bemaxz Logo"
+            width={42}
+            height={40}
+            priority
+          />
+          <span className={`${audiowide.className} text-xl text-white`}>
+            Bemaxz
+          </span>
+        </div>
 
-  <span
-    className={`${audiowide.className} text-[20px] md:text-[24px] text-white`}
-  >
-    Bemaxz
-  </span>
-</div>
+        {/* Desktop Menu */}
+        <nav className="hidden md:flex items-center gap-10">
+          {menuItems.map((item) => (
+            <motion.a
+              key={item}
+              whileHover={{ y: -2 }}
+              transition={{ type: "spring", stiffness: 300 }}
+              className="relative text-sm font-semibold text-white group cursor-pointer"
+            >
+              {item}
+              <span className="absolute left-0 -bottom-1 w-0 h-[2px] bg-[#4EA62F] transition-all duration-300 group-hover:w-full" />
+            </motion.a>
+          ))}
 
-
-        {/* RIGHT SIDE */}
-        <div className="flex items-center gap-4 md:gap-[60px] mr-4 md:mr-6">
-
-          {/* Desktop Menu */}
-          <nav className="hidden md:flex items-center gap-[40px]">
-            <a className="text-[16px] font-semibold text-white hover:text-[#4EA62F] transition-colors duration-300 cursor-pointer">
-              Products
-            </a>
-            <a className="text-[16px] font-semibold text-white hover:text-[#4EA62F] transition-colors duration-300 cursor-pointer">
-              Features
-            </a>
-            <a className="text-[16px] font-semibold text-white hover:text-[#4EA62F] transition-colors duration-300 cursor-pointer">
-              Pricing
-            </a>
-            <a className="text-[16px] font-semibold text-white hover:text-[#4EA62F] transition-colors duration-300 cursor-pointer">
-              Support
-            </a>
-          </nav>
-
-          {/* Desktop CTA */}
-          <button className="hidden md:block h-[40px] px-[24px] border-[2.5px] border-white rounded-[8px] text-[16px] font-semibold text-white bg-transparent hover:bg-[#4EA62F] hover:border-[#4EA62F] transition-all duration-300">
+          <button className="h-[40px] px-6 border-2 border-white rounded-lg text-sm font-semibold text-white hover:bg-[#4EA62F] hover:border-[#4EA62F] transition-all duration-300">
             Start free trial
           </button>
+        </nav>
 
-          {/* Mobile Hamburger */}
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden text-white text-3xl"
-          >
-            {isOpen ? "✕" : "☰"}
-          </button>
-
-        </div>
+        {/* Hamburger */}
+        <button
+          onClick={() => setIsOpen(!isOpen)}
+          className="md:hidden flex flex-col justify-center items-center w-8 h-8"
+        >
+          <motion.span
+            animate={isOpen ? { rotate: 45, y: 6 } : { rotate: 0, y: 0 }}
+            className="w-6 h-[2px] bg-white mb-1"
+          />
+          <motion.span
+            animate={isOpen ? { opacity: 0 } : { opacity: 1 }}
+            className="w-6 h-[2px] bg-white mb-1"
+          />
+          <motion.span
+            animate={isOpen ? { rotate: -45, y: -6 } : { rotate: 0, y: 0 }}
+            className="w-6 h-[2px] bg-white"
+          />
+        </button>
       </div>
 
       {/* Mobile Menu */}
-      <div
-        className={`md:hidden absolute top-[80px] left-0 w-full bg-[#111111] transition-all duration-300 ease-in-out ${
-          isOpen ? "opacity-100 visible" : "opacity-0 invisible"
-        }`}
-      >
-        <div className="flex flex-col items-center gap-6 py-8">
-
-          <a
-            className="text-[18px] font-semibold text-white hover:text-[#4EA62F] transition-colors duration-300"
-            onClick={() => setIsOpen(false)}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            variants={mobileMenuVariants}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+            transition={{ duration: 0.3 }}
+            className="md:hidden fixed top-[80px] left-0 w-full h-screen bg-[#111111] flex flex-col items-center pt-16 gap-8"
           >
-            Products
-          </a>
+            {menuItems.map((item, i) => (
+              <motion.a
+                key={item}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: i * 0.1 }}
+                onClick={() => setIsOpen(false)}
+                className="text-lg font-semibold text-white hover:text-[#4EA62F]"
+              >
+                {item}
+              </motion.a>
+            ))}
 
-          <a
-            className="text-[18px] font-semibold text-white hover:text-[#4EA62F] transition-colors duration-300"
-            onClick={() => setIsOpen(false)}
-          >
-            Features
-          </a>
-
-          <a
-            className="text-[18px] font-semibold text-white hover:text-[#4EA62F] transition-colors duration-300"
-            onClick={() => setIsOpen(false)}
-          >
-            Pricing
-          </a>
-
-          <a
-            className="text-[18px] font-semibold text-white hover:text-[#4EA62F] transition-colors duration-300"
-            onClick={() => setIsOpen(false)}
-          >
-            Support
-          </a>
-
-          <button className="mt-4 h-[40px] px-[24px] border-[2.5px] border-white rounded-[8px] text-[16px] font-semibold text-white hover:bg-[#4EA62F] hover:border-[#4EA62F] transition-all duration-300">
-            Start free trial
-          </button>
-
-        </div>
-      </div>
-
+            <motion.button
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.4 }}
+              className="mt-6 h-[40px] px-6 border-2 border-white rounded-lg text-sm font-semibold text-white hover:bg-[#4EA62F] hover:border-[#4EA62F] transition-all duration-300"
+            >
+              Start free trial
+            </motion.button>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   );
 }
