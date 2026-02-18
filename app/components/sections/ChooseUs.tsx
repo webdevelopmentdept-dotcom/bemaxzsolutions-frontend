@@ -2,25 +2,32 @@ import { outfit } from "../../fonts";
 
 export default function ChooseUs() {
   return (
-    <section className="w-full bg-[#0B0F14] flex justify-center overflow-hidden">
+    <section className="w-full bg-gradient-to-b from-[#0B0F14] to-[#06090D] flex justify-center">
       
-      {/* 1440 Container */}
-      <div className="w-full max-w-[1440px] px-6 sm:px-10 lg:px-[160px] py-16 sm:py-24 lg:py-[136px]">
+      {/* Container */}
+      <div
+        className="w-full max-w-[1440px]
+                   px-6 sm:px-10 lg:px-[120px]
+                   pt-[120px] pb-[120px]"
+      >
 
-        {/* Main Row */}
-        <div className="flex flex-col lg:flex-row lg:justify-between gap-16 lg:gap-0">
+        {/* Main Layout */}
+        <div
+          className="flex flex-col lg:flex-row
+                     justify-between
+                     gap-16 lg:gap-0"
+        >
 
           {/* ================= LEFT SIDE ================= */}
-          <div className="w-full lg:w-[589px]">
+          <div className="w-full lg:w-[600px]">
 
             {/* Label */}
             <p
               className={`${outfit.className}
                 text-[#4EA62F]
-                text-[12px] sm:text-[14px]
-                leading-[16px] sm:leading-[18px]
+                text-[14px]
                 font-medium
-                mb-3 sm:mb-4
+                mb-6
               `}
             >
               Keep Pushing Forward
@@ -29,40 +36,49 @@ export default function ChooseUs() {
             {/* Heading */}
             <h2
               className={`${outfit.className}
-                text-[32px] sm:text-[48px] lg:text-[72px]
-                leading-[40px] sm:leading-[58px] lg:leading-[90px]
+                text-[38px] sm:text-[52px] lg:text-[72px]
+                leading-[46px] sm:leading-[62px] lg:leading-[88px]
                 font-semibold
                 text-white
-                mb-8 sm:mb-10 lg:mb-[60px]
+                mb-10 sm:mb-12 lg:mb-[60px]
               `}
             >
               Quality which you
               <br className="hidden lg:block" />
-              can{" "}
+              {" "}can
+              <br className="block sm:hidden" />
+              {" "}
               <span className="text-[#4EA62F]">
                 always Trust
               </span>
             </h2>
 
             {/* Image */}
-            <div className="w-full lg:w-[589px] h-[220px] sm:h-[300px] lg:h-[360px] rounded-[20px] overflow-hidden">
+            <div
+              className="w-full
+                         h-[240px] sm:h-[300px] lg:h-[360px]
+                         rounded-[20px]
+                         overflow-hidden"
+            >
               <img
                 src="/chooseus.png"
                 alt="Choose Us"
                 className="w-full h-full object-cover"
               />
             </div>
-
           </div>
 
           {/* ================= RIGHT SIDE ================= */}
-          <div className="w-full lg:w-[360px] lg:mt-[212px]">
+          <div
+            className="w-full lg:w-[360px]
+                       lg:self-end
+                       mt-16 lg:mt-0"
+          >
 
             {/* Title */}
             <h3
               className={`${outfit.className}
                 text-[20px] sm:text-[24px]
-                leading-[28px] sm:leading-[32px]
                 font-semibold
                 text-white
                 mb-4
@@ -77,7 +93,7 @@ export default function ChooseUs() {
                 text-[14px] sm:text-[16px]
                 leading-[22px] sm:leading-[26px]
                 text-white/40
-                mb-10 sm:mb-14
+                mb-12
               `}
             >
               Bemaxz is a creative digital studio focused on crafting
@@ -88,23 +104,19 @@ export default function ChooseUs() {
 
             {/* Scroll Indicator */}
             <div className="flex items-center gap-3">
-
               <img
-                src="/mouse.svg"
+                src="/line.png"
                 alt="Scroll icon"
-                className="w-[14px] h-[20px] sm:w-[16px] sm:h-[24px]"
+                className="w-[16px] h-[24px]"
               />
-
               <span
                 className={`${outfit.className}
-                  text-[12px] sm:text-[14px]
-                  leading-[16px] sm:leading-[18px]
+                  text-[13px] sm:text-[14px]
                   text-white
                 `}
               >
                 Scroll for features
               </span>
-
             </div>
 
           </div>
