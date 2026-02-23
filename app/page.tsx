@@ -5,6 +5,7 @@ import ChooseUs from "./components/sections/ChooseUs";
 import Achive from "./components/sections/Achive";
 import Innovative from "./components/sections/Innovative";
 import Roadmap from "./components/sections/Roadmap";
+import Trust from "./components/sections/Trust";
 export default function Home() {
   return (
     <>
@@ -15,6 +16,7 @@ export default function Home() {
       <Achive/>
       <Innovative/>
       <Roadmap/>
+      <Trust/>
    
     </>
   );
