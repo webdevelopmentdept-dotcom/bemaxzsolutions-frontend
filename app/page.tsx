@@ -6,6 +6,8 @@ import Achive from "./components/sections/Achive";
 import Innovative from "./components/sections/Innovative";
 import Roadmap from "./components/sections/Roadmap";
 import Trust from "./components/sections/Trust";
+import Allinone from "./components/sections/Allinone";
+import Services from "./components/sections/Services";
 export default function Home() {
   return (
     <>
@@ -17,7 +19,8 @@ export default function Home() {
       <Innovative/>
       <Roadmap/>
       <Trust/>
-   
+   <Allinone/>
+   <Services/>
     </>
   );
 }
