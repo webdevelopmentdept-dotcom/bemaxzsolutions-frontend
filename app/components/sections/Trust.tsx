@@ -35,7 +35,7 @@ export default function Trust() {
             {/* ===== Top Big Card ===== */}
             <div className="
               w-full
-            h-[267px]
+            min-h-[267px]
               p-[24px]
               rounded-[24px]
               border border-white/10
@@ -117,30 +117,26 @@ export default function Trust() {
                 </div>
 
                 {/* Graph */}
-                <div className="flex flex-col gap-[8px]">
+              {/* Graph */}
+<div className="flex flex-col gap-[4px]">
 
-                  <div className="relative h-[76px]">
-                    <img
-                      src="/security-safe.png"
-                      className="w-full h-full object-contain opacity-90"
-                    />
+  <div className="relative h-[90px] overflow-hidden">
+    <img
+      src="/trust-graph.png"
+      className="w-full h-full object-cover opacity-90"
+    />
+  </div>
 
-                    <div className="
-                      absolute left-1/2 top-[45%
-                      ] w-[8px] h-[8px] bg-[#34C759] rounded-full
-                      -translate-x-1/2 -translate-y-1/2
-                    " />
-                  </div>
+  <div className="flex justify-between text-white/30 text-[12px] px-[4px]">
+    <span>0</span>
+    <span>20</span>
+    <span>40</span>
+    <span>60</span>
+    <span>100</span>
+  </div>
 
-                  <div className="flex justify-between text-white/30 text-[12px]">
-                    <span>0</span>
-                    <span>20</span>
-                    <span>40</span>
-                    <span>60</span>
-                    <span>100</span>
-                  </div>
+</div>
 
-                </div>
 
               </div>
 

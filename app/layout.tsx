@@ -1,6 +1,5 @@
 import "./globals.css";
-import { inter } from "./fonts";
-
+import { outfit } from "./fonts";
 
 export const metadata = {
   title: "Bemaxz",
@@ -14,7 +13,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={outfit.className}>
         {children}
       </body>
     </html>

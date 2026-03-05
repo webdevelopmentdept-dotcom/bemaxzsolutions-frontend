@@ -5,7 +5,7 @@ export default function About() {
     <section className="w-full bg-[#0B0F14] relative overflow-hidden">
 
       {/* 1440 Container */}
-      <div className="max-w-[1440px] lg:h-[566px] mx-auto relative px-4 lg:px-0 py-16 lg:py-0">
+     <div className="max-w-[1440px] lg:h-[566px] mx-auto relative px-4 lg:px-0 pt-16 lg:py-0">
 
         {/* ================= CENTER CONTENT ================= */}
         <div className="max-w-[1120px] mx-auto flex flex-col items-center text-center">
@@ -94,51 +94,43 @@ export default function About() {
           </div>
         </div>
 
-        {/* ================= LEFT FLOATING CARDS ================= */}
-        <div
-          className="
-            mt-12 flex flex-col items-center gap-[24px]
-            lg:absolute lg:left-[100px] lg:top-[250px]
-          "
-        >
-          <div className="w-[220px] lg:w-[246px] h-auto bg-white rounded-[20px] flex items-center justify-center">
-            <img
-              src="/premium.png"
-              alt="Premium Rate"
-              className="w-full h-auto object-contain"
-            />
-          </div>
+       {/* ================= LEFT FLOATING CARDS ================= */}
+<div
+  className="
+  mt-12 flex justify-center
+  lg:absolute lg:top-[140px] lg:left-[0px]
+  "
+>
+  <img
+    src="/card.png"
+    alt="Get Discount"
+    className="w-[260px] sm:w-[300px] lg:w-[341px] h-auto object-contain"
+  />
+</div>
 
-          <img
-            src="/card.png"
-            alt="Get Discount"
-            className="w-[220px] lg:w-[251px] h-auto object-contain"
-          />
-        </div>
-
-        {/* ================= RIGHT EMI CARD ================= */}
-        <div
-          className="
-            mt-12 flex justify-center
-            lg:absolute lg:right-[120px] lg:top-[210px]
-          "
-        >
-          <img
-            src="/content.png"
-            alt="EMI Card"
-            className="w-[240px] lg:w-[270px] h-auto object-contain"
-          />
-        </div>
+       {/* ================= RIGHT EMI CARD ================= */}
+<div
+  className="
+  mt-12 flex justify-center
+  lg:absolute lg:right-[10px] lg:top-[120px]
+  "
+>
+  <img
+    src="/content.png"
+    alt="EMI Card"
+    className="w-[220px] sm:w-[240px] lg:w-[300px] h-auto object-contain"
+  />
+</div>
       </div>
 
       {/* ================= LOGO ROW ================= */}
-      <div className="mt-16 lg:absolute lg:bottom-[20px] lg:left-1/2 lg:-translate-x-1/2 flex justify-center">
-        <img
-          src="/companies.png"
-          alt="Companies"
-          className="w-[90%] lg:w-[622px] h-auto object-contain opacity-40"
-        />
-      </div>
+<div className="-mt-16 flex justify-center px-6 lg:-mt-10">
+  <img
+    src="/companies.png"
+    alt="Companies"
+    className="w-full max-w-[622px] h-auto object-contain opacity-40"
+  />
+</div>
 
     </section>
   );
